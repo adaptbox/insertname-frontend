@@ -1,7 +1,7 @@
 {
   "name": "bsa-client",
   "version": "1.0.0",
-  "homepage": "http://boweihan.github.io/bsa-client",
+  "homepage": "http://adaptbox.github.io/insertname-frontend",
   "scripts": {
     "start": "npm run build:css; (npm run watch:css & react-scripts start)",
     "build": "npm run build:css && react-scripts build",
