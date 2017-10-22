@@ -30,6 +30,8 @@ class HeaderContainer extends React.Component {
           logout={this.logout}
           user={this.props.userReducer}
         />
+        {/* An example of how to add an error modal, it's the containers responsibility
+        to show/not show this modal */}
         {this.props.userReducer && this.props.userReducer.error ?
           <ErrorModal error={this.props.userReducer.error} /> :
           null

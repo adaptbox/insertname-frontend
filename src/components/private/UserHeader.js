@@ -96,22 +96,22 @@ const Header = () => {
           label={<span className="c-userHeader__tabText">My Quotes</span>}
           containerElement={<Link to="/private/quotes" />}
         />
-        <Tab
+        {/* <Tab
           className="c-userHeader__tab"
           style={styles.tab}
           buttonStyle={styles.tabButton}
           icon={<IconButton className="c-userHeader__tabIcon"><DashboardIcon color={grey100} /></IconButton>}
           label={<span className="c-userHeader__tabText">Dashboard</span>}
           containerElement={<Link to="/private/quotes" />}
-        />
-        <Tab
+        /> */}
+        {/* <Tab
           className="c-userHeader__tab"
           style={styles.tab}
           buttonStyle={styles.tabButton}
           icon={<IconButton className="c-userHeader__tabIcon"><SettingsIcon color={grey100} /></IconButton>}
           label={<span className="c-userHeader__tabText">Account</span>}
           containerElement={<Link to="/private/quotes" />}
-        />
+        /> */}
       </Tabs>
     </AppBar>
   );
