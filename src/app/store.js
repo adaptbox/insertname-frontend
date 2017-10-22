@@ -4,11 +4,13 @@ import thunkMiddleware from 'redux-thunk';
 
 import landingReducer from '../redux/reducers/landingReducer';
 import userReducer from '../redux/reducers/userReducer';
+import jobReducer from '../redux/reducers/jobReducer';
 
 export function configureStore(history, initialState) {
   const reducer = combineReducers({
     landingReducer,
     userReducer,
+    jobReducer,
     routing: routerReducer,
   });
 

@@ -27,6 +27,15 @@ export const jobCreationSuccess = newJob => ({
   job: newJob,
 });
 
+export const fetchFailed = () => ({
+  type: types.JOB_FETCH_FAILED,
+});
+
+export const fetchSuccess = jobs => ({
+  type: types.JOB_FETCH_SUCCESS,
+  jobs,
+});
+
 export const createJob = job => async (dispatch) => {
   try {
     const newJob = await Api.post(
@@ -38,3 +47,15 @@ export const createJob = job => async (dispatch) => {
     dispatch(jobCreationFailed(e));
   }
 };
+
+export const getJobsForUser = () => async (dispatch) => {
+  try {
+    const jobs = await Api.get(
+      `${URLS.jobs}/user/${getCurrentUser().id}`,
+    );
+    dispatch(fetchSuccess(jobs));
+  } catch (e) {
+    dispatch(fetchFailed(e));
+  }
+};
+
