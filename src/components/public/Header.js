@@ -61,51 +61,59 @@ const currentRouteIndex = () => {
 };
 
 const Header = (props) => {
-  return (
+  return props.user.requestPending ?
     <AppBar
-      title={
-        <Link style={styles.titleLink} to="/">
-          <i style={styles.titleIcon} className="material-icons">build</i>
-        </Link>
-      }
+      title="Logging In..."
       showMenuIconButton={false}
       style={styles.nav}
       titleStyle={styles.title}
       zDepth={0}
-    >
-      <Tabs
-        tabItemContainerStyle={styles.tabItemContainer}
-        inkBarStyle={styles.inkBar}
-        initialSelectedIndex={currentRouteIndex()}
-      >
-        <Tab
-          style={styles.homeTab}
-          buttonStyle={styles.tabButton}
-          label="Home"
-          containerElement={<Link to="/" />}
-        />
-        {props.user.currentUser ?
-          <Tab
-            style={styles.tab}
-            buttonStyle={styles.tabButton}
-            label="Control Panel"
-            containerElement={<Link to="/private" />}
-          /> :
-          null
+    />
+    : (
+      <AppBar
+        title={
+          <Link style={styles.titleLink} to="/">
+            <i style={styles.titleIcon} className="material-icons">build</i>
+          </Link>
         }
-      </Tabs>
-      {props.user.currentUser ? null : <SignupButton signup={props.signup} />}
-      {props.user.currentUser ? null : <LoginButton login={props.login} />}
-      {props.user.currentUser ?
-        <FlatButton
-          labelStyle={styles.tabButtonLabel}
-          style={styles.tabButton}
-          label="Logout"
-          onClick={props.logout}
-        /> : null
-      }
-    </AppBar>
-  );
+        showMenuIconButton={false}
+        style={styles.nav}
+        titleStyle={styles.title}
+        zDepth={0}
+      >
+        <Tabs
+          tabItemContainerStyle={styles.tabItemContainer}
+          inkBarStyle={styles.inkBar}
+          initialSelectedIndex={currentRouteIndex()}
+        >
+          <Tab
+            style={styles.homeTab}
+            buttonStyle={styles.tabButton}
+            label="Home"
+            containerElement={<Link to="/" />}
+          />
+          {props.user.currentUser ?
+            <Tab
+              style={styles.tab}
+              buttonStyle={styles.tabButton}
+              label="My Stuff"
+              containerElement={<Link to="/private" />}
+            /> :
+            null
+          }
+        </Tabs>
+        {props.user.currentUser ? null : <SignupButton signup={props.signup} />}
+        {props.user.currentUser ? null : <LoginButton login={props.login} />}
+        {props.user.currentUser ?
+          <FlatButton
+            labelStyle={styles.tabButtonLabel}
+            style={styles.tabButton}
+            label="Logout"
+            onClick={props.logout}
+          /> : null
+        }
+      </AppBar>
+    );
 };
 
 Header.propTypes = {

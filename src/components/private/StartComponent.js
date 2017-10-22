@@ -1,7 +1,7 @@
 import React from 'react';
 import { RaisedButton } from 'material-ui';
 import PropTypes from 'prop-types';
-import { red500 } from 'material-ui/styles/colors';
+// import { red500 } from 'material-ui/styles/colors';
 import StartForm from './StartForm';
 
 const styles = {

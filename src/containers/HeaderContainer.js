@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import * as userActions from '../redux/actions/userActions';
 import Header from '../components/public/Header';
+import ErrorModal from '../components/public/ErrorModal';
 
 class HeaderContainer extends React.Component {
   login = (credentials) => {
@@ -22,12 +23,18 @@ class HeaderContainer extends React.Component {
 
   render() {
     return (
-      <Header
-        login={this.login}
-        signup={this.signup}
-        logout={this.logout}
-        user={this.props.userReducer}
-      />
+      <div>
+        <Header
+          login={this.login}
+          signup={this.signup}
+          logout={this.logout}
+          user={this.props.userReducer}
+        />
+        {this.props.userReducer && this.props.userReducer.error ?
+          <ErrorModal error={this.props.userReducer.error} /> :
+          null
+        }
+      </div>
     );
   }
 }

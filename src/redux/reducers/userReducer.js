@@ -20,6 +20,7 @@ const userState = {
   // null or user
   currentUser: getCurrentUser(),
   requestPending: false,
+  error: null,
 };
 
 const userReducer = (state = userState, action) => {
@@ -28,19 +29,23 @@ const userReducer = (state = userState, action) => {
       return {
         currentUser: null,
         requestPending: false,
+        error: null,
       };
     case types.LOGIN_SUCCESS:
       return Object.assign({}, state, {
         currentUser: action.currentUser,
         requestPending: false,
+        error: null,
       });
     case types.LOGIN_FAILED:
       return Object.assign({}, state, {
         requestPending: false,
+        error: 'Login Failed',
       });
     case types.LOGIN_SHOW_LOADING:
       return Object.assign({}, state, {
         requestPending: true,
+        error: null,
       });
     default:
       return state;
